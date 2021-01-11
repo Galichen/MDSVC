@@ -19,6 +19,7 @@ labels_pre = clusters_assignments;
 %% evaluation%%
 
 RI = RandIndex(labels_pre,classification);
+
 AC = cluster_acc(classification,labels_pre);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
