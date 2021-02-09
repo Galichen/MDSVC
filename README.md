@@ -1,12 +1,12 @@
-# MSVC
-A Matlab code for the minimum  distribution machine for support vector clustering.
+# MDSVC
+A Matlab code for the minimum  distribution  for support vector clustering.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% 
 
 clc
 close all
 
-addpath(genpath('MSVC-CD'))
+addpath(genpath('MDSVC-CD'))
 %% %%%------------------------kernel MSVC----------------------%%%
 
 load('iris.mat');
