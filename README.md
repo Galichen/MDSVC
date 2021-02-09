@@ -7,7 +7,7 @@ clc
 close all
 
 addpath(genpath('MDSVC-CD'))
-%% %%%------------------------kernel MSVC----------------------%%%
+%% %%%------------------------kernel MDSVC----------------------%%%
 
 load('iris.mat');
 
@@ -18,9 +18,9 @@ labels_pre = clusters_assignments;
 
 %% evaluation%%
 
-RI = RandIndex(labels_pre,classification);
+ARI = RandIndex(labels_pre,classification);
 
-AC = cluster_acc(classification,labels_pre);
+ACC = cluster_acc(classification,labels_pre);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
