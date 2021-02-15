@@ -7,6 +7,8 @@ clc
 close all
 
 addpath(genpath('MDSVC-CD'))
+
+
 %% %%%------------------------kernel MDSVC----------------------%%%
 
 load('iris.mat');
