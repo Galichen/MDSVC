@@ -39,6 +39,7 @@ adjacent_matrix = FindAdjMatrix(Samples,N,beta,quad,R,q);
 % Finds the cluster assignment of each data point 
 clusters_assignments = FindConnectedComponents(adjacent_matrix,N);
 ClusterPerQ = max(clusters_assignments);
+acc=cluster_acc(classification,clusters_assignments)
 %
 %for i=1:N
 %    for j=1:N

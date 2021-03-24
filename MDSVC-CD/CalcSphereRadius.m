@@ -47,7 +47,7 @@ R = max(distance); % ÔÚËùÓĞµÄÖ§³ÖÏòÁ¿ÖĞ£¬Ó¦¸ÃÊÇ»ñÈ¡×î´óµÄ°ë¾¶¡£´ÓÕûÌåÉÏËµ£¬°ë¾¶Ò
 %                      Ö§³ÖÏòÁ¿¶¼´¦ÓÚÇòÃæÉÏ£¬ËùÒÔ£¬Ëù»ñµÃµÄËùÓĞµÄ¾àÀëÓ¦¸ÃÊÇÏàµÈµÄ
 % safty check: all the SV distances should be equal 
 if (distance/R ~= ones(nof_SV,1))
-   printf('error calculating sphere radius'); 
+   printf('error calculating sphere radius,please enter a new set of parameters'); 
    R = -1;
    return;
 end
