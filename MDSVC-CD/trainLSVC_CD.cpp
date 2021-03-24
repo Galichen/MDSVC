@@ -248,7 +248,7 @@ static void solve_cd(
         index[i] = i;
         
          //initialize \beta = 0
-        beta[i] = (-3)* lambda1/num;                                                   //update
+        beta[i] =  lambda1/num;                                                   //update
     }
     
    
@@ -257,7 +257,7 @@ static void solve_cd(
     //initialize \w = (lamba1)/(m) Ge
     for(i=0; i<num; i++)
         {
-            alpha[i] = (-2)*prob->H[i];
+            alpha[i] = 2*prob->H[i];
         }        
      
     while(iter < max_iter)                                                 //update
@@ -279,7 +279,8 @@ static void solve_cd(
             
             // calculate gradient g[i]:
             // kernel: g[i] = (G; -G) \w^top + (\epsilon - y; \epsilon + y);
-           	G = ddot_(&num, alpha, &inc, prob->Q+i*num, &inc);                                            //update
+           for (int j = 0; j < num; j++)
+				G += prob->Q[i * num + j] * alpha[j];                                         //update
             G = 2*G;  
             //mexPrintf("%d\n",G);
             PG = 0;
@@ -327,7 +328,7 @@ static void solve_cd(
 
                 d = beta[i] - beta_old;
                 for(int j=0; j<num; j++)
-                    alpha[j] += prob->T[i*num + j] * d ;
+                    alpha[j] += prob->T[j*num + i] * d ;
                 //mexPrintf("3");
             }
         }
@@ -336,8 +337,10 @@ static void solve_cd(
         
         if(PGmax_new - PGmin_new <= eps)
         {
+            
             if(active_size == num)
-                break;
+            {mexPrintf("Reach covergence \n");
+                break;}
             else
             {
                 active_size = num;
@@ -356,7 +359,7 @@ static void solve_cd(
      }
     
 
-    
+    mexPrintf("number of iterations is %d\n",iter);
     delete [] beta;
     //delete [] y;
     delete [] index;
@@ -400,7 +403,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
         plhs[0] = mxCreateDoubleMatrix(prob.num, 1, mxREAL);
         alpha = mxGetPr(plhs[0]);
         
-        solve_cd(&prob,alpha, 0.01);       
+        solve_cd(&prob,alpha, 0.0001);       
     }
     else
     {
