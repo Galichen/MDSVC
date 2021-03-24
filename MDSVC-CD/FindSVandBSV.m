@@ -51,21 +51,6 @@ end
 BSV = BSV(:, 1:nof_BSV);
 SV = SV(:,1:nof_SV);
 if nof_SV~=N
-    nof_SV=0;
-    for i = 1:N   
-    
-    % BSV - outliers ( only when beta equlas C - the upper bound)
-    if beta(i) == C;
-       nof_BSV = nof_BSV + 1; 
-       BSV(:, nof_BSV) = Samples(:,i);
-   
-    
-    elseif beta(i)<1e-6 
-           nof_SV = nof_SV + 1;
-           SV(:,nof_SV) = Samples(:,i);
-    end
-    
-   end
+   [SV,nof_SV,BSV,nof_BSV] = FindSV_BSV(Samples,beta,C);
 end
-BSV = BSV(:, 1:nof_BSV);
-SV = SV(:,1:nof_SV);
+   
