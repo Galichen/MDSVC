@@ -1,6 +1,6 @@
 %=====================================================================
 %
-%	LSVC - The main function in the project
+%	MDSVC - The main function in the project
 %  ---
 %
 %	Parameters:   
